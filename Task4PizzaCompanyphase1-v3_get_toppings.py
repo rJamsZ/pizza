@@ -1,5 +1,4 @@
 ##### Start
-# Awesome Pizza Company
 ##### Variables
 size_cost = 0
 toppinglist = ["Pepperoni", "Mushroom", "Extra cheese", "sausage", "Onion", "Black olives", "Green pepper", "Fresh garlic", "Tomato", "Fresh basil"]
@@ -8,6 +7,8 @@ toppings_price = 0.75
 #### Functons
 
 def get_pizza_size():
+    cost=0.0
+    size=""
     size = input("\nSmall- £5.50\nMedium- £7.90\nLarge- £12.00\nWhat size pizza would you like:")
     print(size)
 
@@ -24,6 +25,7 @@ def get_pizza_size():
         cost = 12.00
     else:
         print("Invalid input")
+        get_pizza_size()
 
 #    if cost != 0:
 #        print("inside function: "+str(cost))
@@ -45,7 +47,7 @@ def display_topping_list(topping_list_to_display):
     return output
 
 def get_toppings():
-    #name_toppings = input("Which toppings would you like?")
+        
     amount_toppings = input("How many toppings would you like?\nYou can choose up to 3 from our list")
     if amount_toppings == "0":
         return 0
@@ -57,14 +59,16 @@ def get_toppings():
         return 3
     else:
         print("Invalid input")
-        get_toppings()
+        return get_toppings()
 
 
 
-def calculate_final_ammount(ammount_toppings, size_cost, toppings_price ):
+def calculate_final_ammount(ammount_toppings,size_cost, toppings_price ):
 
-    
-    return str(size_cost)+" That will be " + str(size_cost+(ammount_toppings*toppings_price)) + ", Thankyou for your order"
+    output = "Pizza cost = £{pizza:.2f}"
+
+    return (output.format(pizza= str(size_cost)+" That will be " + str(size_cost+(ammount_toppings*toppings_price)) + ", Thankyou for your order"))
+    #return str(size_cost)+" That will be " + str(size_cost+(ammount_toppings*toppings_price)) + ", Thankyou for your order"
    
     
 
@@ -72,6 +76,7 @@ def calculate_final_ammount(ammount_toppings, size_cost, toppings_price ):
 #### Code
 
 while True:
+    number_of_toppings_asked_for = 0
     print("\n\nWelcome to the Calder Pizzeria!")
 
     size_cost = get_pizza_size()
@@ -82,6 +87,6 @@ while True:
 
     number_of_toppings_asked_for = get_toppings()
 
-
+    
     print(calculate_final_ammount(number_of_toppings_asked_for,size_cost,toppings_price))
 
