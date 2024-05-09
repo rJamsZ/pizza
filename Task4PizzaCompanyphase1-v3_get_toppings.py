@@ -1,5 +1,5 @@
 ##### Start
-
+# Awesome Pizza Company
 ##### Variables
 size_cost = 0
 toppinglist = ["Pepperoni", "Mushroom", "Extra cheese", "sausage", "Onion", "Black olives", "Green pepper", "Fresh garlic", "Tomato", "Fresh basil"]
