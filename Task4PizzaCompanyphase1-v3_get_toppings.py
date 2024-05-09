@@ -65,9 +65,9 @@ def get_toppings():
 
 def calculate_final_ammount(ammount_toppings,size_cost, toppings_price ):
 
-    output = "Pizza cost = £{pizza:.2f}"
+    output = "Pizza cost = £{pizza:.2f}.\n Thank you for your order!"
 
-    return (output.format(pizza= str(size_cost)+" That will be " + str(size_cost+(ammount_toppings*toppings_price)) + ", Thankyou for your order"))
+    return output.format(pizza = size_cost+(ammount_toppings*toppings_price))
     #return str(size_cost)+" That will be " + str(size_cost+(ammount_toppings*toppings_price)) + ", Thankyou for your order"
    
     
