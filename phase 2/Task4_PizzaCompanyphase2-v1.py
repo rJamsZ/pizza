@@ -48,18 +48,10 @@ def display_topping_list(topping_list_to_display):
 
 def get_toppings():
         
-    amount_toppings = input("How many toppings would you like?\nYou can choose up to 3 from our list")
-    if amount_toppings == "0":
-        return 0
-    elif amount_toppings == "1":
-        return 1
-    elif amount_toppings == "2":
-        return 2
-    elif amount_toppings == "3":
-        return 3
-    else:
-        print("Invalid input")
-        return get_toppings()
+    amount_toppings = int(input("How many toppings would you like?"))
+    return amount_toppings
+    print(amount_toppings*toppings_price)
+
 
 
 
