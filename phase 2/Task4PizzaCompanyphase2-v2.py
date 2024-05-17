@@ -1,11 +1,11 @@
 ##### Start
 ##### Variables
 size_cost = 0
-toppinglist = ["Pepperoni", "Mushroom", "Extra cheese", "sausage", "Onion", "Black olives", "Green pepper", "Fresh garlic", "Tomato", "Fresh basil"]
+toppinglist = ["None", "Pepperoni", "Mushroom", "Extra cheese", "sausage", "Onion", "Black olives", "Green pepper", "Fresh garlic", "Tomato", "Fresh basil"]
 toppings_price = 0.75
 pizzas = {"large":12.00,"medium":7.90,"small":5.50}
 
-
+chosen_toppings = {"None":0,"Pepperoni":1, "Mushroom":2, "Extra cheese":3, "sausage":4, "Onion":5, "Black olives":6, "Green pepper":7, "Fresh garlic":8, "Tomato":9, "Fresh basil":10}
 '''
 dictonary for the topppings in topping lists
 
@@ -27,9 +27,8 @@ def get_pizza_size():
     size = input("\nSmall- £5.50\nMedium- £7.90\nLarge- £12.00\nWhat size pizza would you like:")
     print(size)
 
-    if size == "small":# if pizza is small store cost in total_cost
-        print("chose small") 
-        return "small"  
+    if size == "small":# if pizza is small store cost in total_cost 
+        return "small"   
     elif size == "medium":
         return "medium"
     elif size == "large":
@@ -57,8 +56,8 @@ def get_toppings():
     print(amount_toppings*toppings_price)
 
 def get_topping_order():
-    user_toppinglist = input("Which of the toppings would you like?")
-    return user_toppinglist
+    chosen_toppings = input("Which of the toppings would you like?")
+    return chosen_toppings 
 
 def display_order(size,cost):
     output="Your size is"+size+". This costs £"+str(cost)
@@ -83,7 +82,7 @@ while True:
     number_of_toppings_asked_for = 0
     print("\n\nWelcome to the Calder Pizzeria!")
 
-    pizza_size = get_pizza_size()  # get pizza size order
+    pizzas = get_pizza_size()  # get pizza size order
 
     #print(pizzas[ pizza_size])
 
@@ -91,7 +90,7 @@ while True:
     
 
 
-    print(get_topping_list(toppinglist))
+#    print(get_topping_list(toppinglist))
 
     print(display_topping_list(get_topping_list(toppinglist)))
     
