@@ -1,23 +1,11 @@
 ##### Start
 ##### Variables
 size_cost = 0
-toppinglist = ["None", "Pepperoni", "Mushroom", "Extra cheese", "sausage", "Onion", "Black olives", "Green pepper", "Fresh garlic", "Tomato", "Fresh basil"]
+toppinglist = ["Pepperoni", "Mushroom", "Extra cheese", "sausage", "Onion", "Black olives", "Green pepper", "Fresh garlic", "Tomato", "Fresh basil"]
 toppings_price = 0.75
 pizzas = {"large":12.00,"medium":7.90,"small":5.50}
 
-chosen_toppings = {"None":0,"Pepperoni":1, "Mushroom":2, "Extra cheese":3, "sausage":4, "Onion":5, "Black olives":6, "Green pepper":7, "Fresh garlic":8, "Tomato":9, "Fresh basil":10}
-'''
-dictonary for the topppings in topping lists
 
-0:none
-1:pepperoni etc.
-
-
-ask the user for their choices
-
-store the number in a list.... chosen_toppings[]
-
-'''
 
 #### Functions
 
@@ -27,8 +15,9 @@ def get_pizza_size():
     size = input("\nSmall- £5.50\nMedium- £7.90\nLarge- £12.00\nWhat size pizza would you like:")
     print(size)
 
-    if size == "small":# if pizza is small store cost in total_cost 
-        return "small"   
+    if size == "small":# if pizza is small store cost in total_cost
+        print("chose small") 
+        return "small"  
     elif size == "medium":
         return "medium"
     elif size == "large":
@@ -56,23 +45,17 @@ def get_toppings():
     print(amount_toppings*toppings_price)
 
 def get_topping_order():
-    chosen_toppings = input("Which of the toppings would you like?")
-    return chosen_toppings 
-
-def display_order(size,cost):
-    output="Your size is"+size+". This costs £"+str(cost)
-
-    return output
-
-
+    user_toppinglist = input("Which of the toppings would you like?")
+    return user_toppinglist
 
 def calculate_final_ammount(ammount_toppings,size_cost, toppings_price ):
 
-    output = "Pizza cost = £{pizza:.2f}.\n Thank you for your order!"
-
-    return output.format(pizza = size_cost+(ammount_toppings*toppings_price))
-    #return str(size_cost)+" That will be " + str(size_cost+(ammount_toppings*toppings_price)) + ", Thankyou for your order"
+    return (size_cost+(ammount_toppings*toppings_price))
    
+def display_order(size,cost):
+    output = "Your {size} Pizza will cost = £{cost:.2f}.\n Thank you for your order!"
+
+    return output.format(size = size, cost = cost)
     
 
 
@@ -82,7 +65,7 @@ while True:
     number_of_toppings_asked_for = 0
     print("\n\nWelcome to the Calder Pizzeria!")
 
-    pizzas = get_pizza_size()  # get pizza size order
+    pizza_size = get_pizza_size()  # get pizza size order
 
     #print(pizzas[ pizza_size])
 
@@ -90,18 +73,22 @@ while True:
     
 
 
-#    print(get_topping_list(toppinglist))
+    print(get_topping_list(toppinglist))
 
     print(display_topping_list(get_topping_list(toppinglist)))
     
 
     number_of_toppings_asked_for = get_toppings()
 
-    print(calculate_final_ammount(number_of_toppings_asked_for,size_cost,toppings_price))
+#    print(calculate_final_ammount(number_of_toppings_asked_for,size_cost,toppings_price))
+
+#    size_cost = calculate_final_ammount(number_of_toppings_asked_for,size_cost,toppings_price)
 
     user_toppinglist = get_topping_order()
     
     #print(get_pizza_size + user_toppinglist)
+
+    size_cost = calculate_final_ammount(number_of_toppings_asked_for,pizzas[pizza_size],toppings_price)
 
     print(display_order(pizza_size,size_cost))
 
