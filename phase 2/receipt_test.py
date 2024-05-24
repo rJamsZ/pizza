@@ -1,6 +1,6 @@
 ##### Start
 ##### Variables
-size_cost = 0
+total_cost = 0
 toppinglist = ["None","Pepperoni", "Mushroom", "Extra cheese", "sausage", "Onion", "Black olives", "Green pepper", "Fresh garlic", "Tomato", "Fresh basil"]
 toppings_price = 0.75
 pizzas = {"large":12.00,"medium":7.90,"small":5.50}
@@ -18,9 +18,8 @@ def get_pizza_size():
     size = input("\nSmall- £5.50\nMedium- £7.90\nLarge- £12.00\nWhat size pizza would you like:")
     print(size)
 
-    if size == "small":# if pizza is small store cost in total_cost
-        print("chose small") 
-        return "small"  
+    if size == "small":# if pizza is small store cost in total_cost 
+        return "small"
     elif size == "medium":
         return "medium"
     elif size == "large":
@@ -57,10 +56,10 @@ def calculate_final_ammount(ammount_toppings,size_cost, toppings_price ):
 
 def generate_receipt_file(data_to_save, type_of_file):
     '''generates receipt txt'''
-    if type_of_file == refund
-    write a refund
-    elif  type_of_file == receipt
-    write a receipt
+#    if type_of_file == refund
+#    write a refund
+#    elif  type_of_file == receipt
+#    write a receipt
     
     #generate timestamped filename
     #open file (use f = open..."
@@ -71,13 +70,13 @@ def generate_receipt_file(data_to_save, type_of_file):
    
 def display_order(size,cost):
     output = ("*"*49+"\n")
-    output += "Your {size} Pizza will cost = £{cost:.2f}.\n Thank you for your order!"
-    output += "\n"+"*"*49+"\n Thank you for your order"
+    output += "{size} Pizza - £{size_cost:.2f}" +"\n" + "{amount_toppings} toppings - {999continue here we want price of amountofuserstoppings999}"  +"\n"+ user_toppinglist+ " will cost = £{cost:.2f}.\n"
+    output += "\n"+"*"*49+"\n Thank you for your order!\n"
     f = open("receipt0001.txt", "a")
-    f.write(output.format(size = size, cost = cost))
+    f.write(output.format(size = size, cost = cost, size_cost = pizzas[pizza_size], amount_toppings = number_of_toppings_asked_for,  ))
     f.close()
-    
-    return output.format(size = size, cost = cost)
+
+    return output.format(size = size, cost = cost, size_cost =  pizzas[pizza_size], amount_toppings = number_of_toppings_asked_for,   )
 
     
 
@@ -109,7 +108,6 @@ while True:
     user_toppinglist = get_topping_order()
     
     #print(get_pizza_size + user_toppinglist)
-
-    size_cost = calculate_final_ammount(number_of_toppings_asked_for,pizzas[pizza_size],toppings_price)
-
-    print(display_order(pizza_size,size_cost))
+    total_cost = calculate_final_ammount(number_of_toppings_asked_for,pizzas[pizza_size],toppings_price) 
+    
+    print(display_order(pizza_size,total_cost))
