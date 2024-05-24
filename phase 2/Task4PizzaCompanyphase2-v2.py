@@ -1,7 +1,7 @@
 ##### Start
 ##### Variables
 size_cost = 0
-toppinglist = ["Pepperoni", "Mushroom", "Extra cheese", "sausage", "Onion", "Black olives", "Green pepper", "Fresh garlic", "Tomato", "Fresh basil"]
+toppinglist = ["None","Pepperoni", "Mushroom", "Extra cheese", "sausage", "Onion", "Black olives", "Green pepper", "Fresh garlic", "Tomato", "Fresh basil"]
 toppings_price = 0.75
 pizzas = {"large":12.00,"medium":7.90,"small":5.50}
 
