@@ -42,7 +42,7 @@ def display_topping_list(topping_list_to_display):
 
 def get_toppings():
         
-    amount_toppings = int(input("How many toppings would you like? Each topping is 75p"))
+    amount_toppings = float(input("How many toppings would you like? Each topping is 75p"))
     return amount_toppings
     print(amount_toppings*toppings_price)
 
@@ -70,13 +70,13 @@ def generate_receipt_file(data_to_save, type_of_file):
    
 def display_order(size,cost):
     output = ("*"*49+"\n")
-    output += "{size} Pizza - £{size_cost:.2f}" +"\n" + "{amount_toppings} toppings - {999continue here we want price of amountofuserstoppings999}"  +"\n"+ user_toppinglist+ " will cost = £{cost:.2f}.\n"
+    output += "{size} Pizza - £{size_cost:.2f}" +"\n" + "{amount_toppings} toppings - "+ "(float({amount_toppings})*float({toppings_price}))"  +"\n"+ user_toppinglist+ " will cost = £{cost:.2f}.\n"
     output += "\n"+"*"*49+"\n Thank you for your order!\n"
     f = open("receipt0001.txt", "a")
-    f.write(output.format(size = size, cost = cost, size_cost = pizzas[pizza_size], amount_toppings = number_of_toppings_asked_for,  ))
+    f.write(output.format(size = size, cost = cost, size_cost = pizzas[pizza_size], amount_toppings = number_of_toppings_asked_for, toppings_price = toppings_price ))
     f.close()
 
-    return output.format(size = size, cost = cost, size_cost =  pizzas[pizza_size], amount_toppings = number_of_toppings_asked_for,   )
+    return output.format(size = size, cost = cost, size_cost =  pizzas[pizza_size], amount_toppings = number_of_toppings_asked_for, toppings_price = toppings_price  )
 
     
 
