@@ -54,6 +54,9 @@ def calculate_final_ammount(ammount_toppings,size_cost, toppings_price ):
 
     return (size_cost+(ammount_toppings*toppings_price))
 
+def calculate_final_toppings_cost(ammount_toppings,toppings_price):
+    return (ammount_toppings*toppings_price)
+
 def generate_receipt_file(data_to_save, type_of_file):
     '''generates receipt txt'''
 #    if type_of_file == refund
@@ -69,14 +72,17 @@ def generate_receipt_file(data_to_save, type_of_file):
     pass
    
 def display_order(size,cost):
+    final_toppings_ammount = calculate_final_toppings_cost(number_of_toppings_asked_for,toppings_price)
     output = ("*"*49+"\n")
-    output += "{size} Pizza - £{size_cost:.2f}" +"\n" + "{amount_toppings} toppings - "+ "(float({amount_toppings})*float({toppings_price}))"  +"\n"+ user_toppinglist+ " will cost = £{cost:.2f}.\n"
-    output += "\n"+"*"*49+"\n Thank you for your order!\n"
+    output += "{size} Pizza - £{size_cost:.2f}" +"\n"+user_toppinglist+ "\n{amount_toppings:.0f} toppings - "  +  "£{toppings_price:.2f}" +"\n"+"*"*49+"\n"+ "\ntotal cost = £{cost:.2f}.\n" 
+
+    #+ cost#  + "{amount_toppings} toppings - " # + (float({amount_toppings})*float({toppings_price}))  +"\n"+ user_toppinglist+ " will cost = £{cost:.2f}.\n"
+    output += "\n"+"*"*49+"\n Thank you for your order!\n"+ "\n"+"-"*49
     f = open("receipt0001.txt", "a")
-    f.write(output.format(size = size, cost = cost, size_cost = pizzas[pizza_size], amount_toppings = number_of_toppings_asked_for, toppings_price = toppings_price ))
+    f.write(output.format(size = size, cost = cost, size_cost = pizzas[pizza_size], amount_toppings = number_of_toppings_asked_for, toppings_price =final_toppings_ammount)) #toppings_price ))
     f.close()
 
-    return output.format(size = size, cost = cost, size_cost =  pizzas[pizza_size], amount_toppings = number_of_toppings_asked_for, toppings_price = toppings_price  )
+    return output.format(size = size, cost = cost , size_cost =  pizzas[pizza_size], amount_toppings = number_of_toppings_asked_for, toppings_price = final_toppings_ammount  )
 
     
 
