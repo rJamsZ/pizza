@@ -50,9 +50,16 @@ def get_topping_order():
     user_toppinglist = input("Which of the toppings would you like?")
     return user_toppinglist
 
-def calculate_final_ammount(ammount_toppings,size_cost, toppings_price ):
+def get_delivery():
+
+    get_delivery = input("Would you like your order to be delivered?")
+    if get_delivery == "yes":
+        return calculate_final_ammount + delivery 
+
+def calculate_final_ammount(ammount_toppings,size_cost, toppings_price, ):
 
     return (size_cost+(ammount_toppings*toppings_price))
+
 
 def calculate_final_toppings_cost(ammount_toppings,toppings_price):
     return (ammount_toppings*toppings_price)
@@ -77,7 +84,7 @@ def display_order(size,cost):
     output += "{size} Pizza - £{size_cost:.2f}" +"\n"+user_toppinglist+ "\n{amount_toppings:.0f} toppings - "  +  "£{toppings_price:.2f}" +"\n"+"*"*49+"\n"+ "\ntotal cost = £{cost:.2f}.\n" 
 
     #+ cost#  + "{amount_toppings} toppings - " # + (float({amount_toppings})*float({toppings_price}))  +"\n"+ user_toppinglist+ " will cost = £{cost:.2f}.\n"
-    output += "\n"+"*"*49+"\n Thank you for your order!\n"+ "\n"+"-"*49
+    output += "\n"+"*"*49+"\n Thank you for your order!\n"+ "\n"+"-"*49 + "\n"
     f = open("receipt0001.txt", "a")
     f.write(output.format(size = size, cost = cost, size_cost = pizzas[pizza_size], amount_toppings = number_of_toppings_asked_for, toppings_price =final_toppings_ammount)) #toppings_price ))
     f.close()
@@ -97,7 +104,7 @@ while True:
     #print(pizzas[ pizza_size])
 
     #size_cost = pizzas[pizza_size]
-    
+
 
 
     print(get_topping_list(toppinglist))
@@ -114,6 +121,6 @@ while True:
     user_toppinglist = get_topping_order()
     
     #print(get_pizza_size + user_toppinglist)
-    total_cost = calculate_final_ammount(number_of_toppings_asked_for,pizzas[pizza_size],toppings_price) 
+    total_cost = calculate_final_ammount(number_of_toppings_asked_for,pizzas[pizza_size],toppings_price,) 
     
     print(display_order(pizza_size,total_cost))
